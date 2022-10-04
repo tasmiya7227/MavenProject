@@ -11,3 +11,4 @@ When user enters user name and password
 Then home page is displayed
 Then user is loggedout
 
+

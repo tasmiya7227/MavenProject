@@ -24,7 +24,7 @@ public class ReadExcel {
 		 FileInputStream inputStream = new FileInputStream(file);
 		 Workbook workBook = null;
 		 String fileExtensionName = fileName.substring(fileName.indexOf("."));
-		 if(fileExtensionName.equals(".xlsx"))
+		 if(fileExtensionName.equals(".xls"))
 		 {
 			 workBook = new XSSFWorkbook(inputStream);
 
@@ -39,20 +39,12 @@ public class ReadExcel {
 
 		    int rowCount = sheet.getLastRowNum()-sheet.getFirstRowNum();
 		    System.out.println("Row count " +rowCount);
-
-		    for (int i = 0; i < rowCount+1; i++) {
-
-		        Row row = sheet.getRow(i);
-
-		       
-		        for (int j = 0; j < row.getLastCellNum(); j++) {
-
-		            System.out.print(row.getCell(j).getStringCellValue()+"|| ");
-
-		        }
-
-		        System.out.println();
-		    } 
+		    String userName,passWord;
+		    Row row= sheet.getRow(1);
+		    userName= row.getCell(0).getStringCellValue();
+		    passWord=row.getCell(1).getStringCellValue();
+		    System.out.println(userName);
+		    
 		    System.setProperty("webdriver.chrome.driver", "C:\\Tasmiya\\chromedriver.exe");
 			WebDriver driver = new ChromeDriver();
 			driver.get("https://www.facebook.com/");
